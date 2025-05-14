@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LOYALTY360 - Check Status</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">
+        <h1>LOYALTY360</h1>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Register</a></li>
+          <li><a href="status.html" class="active">Check Status</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <div class="status-container">
+        <div class="status-header">
+          <h2>Check Your Loyalty Status</h2>
+          <p>Enter your mobile number or identification number to view your current loyalty status.</p>
+        </div>
+        
+        <form id="status-form" class="status-form">
+          <div class="form-group">
+            <label for="searchType">Search By</label>
+            <select id="searchType" name="searchType">
+              <option value="mobile">Mobile Number</option>
+              <option value="id">Identification Number</option>
+            </select>
+          </div>
+          
+          <div class="form-group" id="mobileField">
+            <label for="mobileNumber">Mobile Number</label>
+            <input type="tel" id="mobileNumber" name="mobileNumber">
+          </div>
+          
+          <div class="form-group" id="idField" style="display: none;">
+            <label for="idNumber">Identification Number</label>
+            <input type="text" id="idNumber" name="idNumber">
+          </div>
+          
+          <div class="form-actions">
+            <button type="submit" id="check-status-btn">Check Status</button>
+          </div>
+        </form>
+        
+        <div id="loader" class="loader" style="display: none;">
+          <div class="spinner"></div>
+          <p>Loading your loyalty status...</p>
+        </div>
+        
+        <div id="customer-status" class="customer-status" style="display: none;">
+          <div class="customer-info">
+            <h3>Customer Information</h3>
+            <div class="info-grid">
+              <div class="info-item">
+                <span class="label">Name:</span>
+                <span class="value" id="customer-name">-</span>
+              </div>
+              <div class="info-item">
+                <span class="label">Email:</span>
+                <span class="value" id="customer-email">-</span>
+              </div>
+              <div class="info-item">
+                <span class="label">Mobile:</span>
+                <span class="value" id="customer-mobile">-</span>
+              </div>
+              <div class="info-item">
+                <span class="label">Join Date:</span>
+                <span class="value" id="customer-join-date">-</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="loyalty-status">
+            <h3>Loyalty Status</h3>
+            <div class="status-grid">
+              <div class="tier-container">
+                <div class="tier-label">Current Tier</div>
+                <div class="tier-value" id="customer-tier">-</div>
+                <div class="tier-progress">
+                  <div class="tier-progress-label">
+                    <span>Progress to Next Tier</span>
+                    <span id="tier-percentage">0%</span>
+                  </div>
+                  <div class="progress-bar">
+                    <div class="progress-fill" id="tier-progress-fill" style="width: 0%"></div>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="points-container">
+                <div class="points-label">Available Points</div>
+                <div class="points-value" id="customer-points">-</div>
+                <div class="points-details">
+                  <div class="points-item">
+                    <span class="label">Total Earned:</span>
+                    <span class="value" id="earned-points">-</span>
+                  </div>
+                  <div class="points-item">
+                    <span class="label">Total Redeemed:</span>
+                    <span class="value" id="redeemed-points">-</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="next-tier-benefits">
+            <h3>Next Tier Benefits</h3>
+            <div id="next-tier-container">
+              <div class="tier-benefit">
+                <p>Continue earning points to unlock additional benefits in the next tier!</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div id="status-error-message" class="error-message" style="display: none;">
+          <div class="error-icon">!</div>
+          <h3>Customer Not Found</h3>
+          <p>We couldn't find a customer with the provided information.</p>
+          <div class="error-actions">
+            <a href="index.html" class="btn btn-register">Register Now</a>
+            <button class="btn btn-try-again" id="status-try-again-btn">Try Again</button>
+          </div>
+        </div>
+      </div>
+    </main>
+    
+    <footer>
+      <p>&copy; 2025 LOYALTY360. All rights reserved.</p>
+    </footer>
+  </div>
+
+  <script src="js/api.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
